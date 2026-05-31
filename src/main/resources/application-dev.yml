@@ -1,0 +1,31 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_cards
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+server:
+  port: 8080
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E327235753ANN2F413F4428472B4B6250645367566B5970
+    encryption:
+      cardNumber:
+        secret-key: 12345678901234567890123456789012
+
+springdoc:
+  swagger-ui:
+    enabled: true
+
