@@ -1,0 +1,14 @@
+.env
+application-prod.yml
+
+target/
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+.DS_Store
+
+*.log
+logs/
