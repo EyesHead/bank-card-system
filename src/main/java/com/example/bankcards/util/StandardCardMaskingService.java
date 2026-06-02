@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 @Primary
 @Service
 public class StandardCardMaskingService implements CardMaskingService {
-
     private final CardEncryptionService encryptionService;
 
     public StandardCardMaskingService(CardEncryptionService encryptionService) {
@@ -15,8 +14,7 @@ public class StandardCardMaskingService implements CardMaskingService {
 
     @Override
     public String mask(String cardNumber) {
-        String digitsOnly = cardNumber.replaceAll(" ", "");
-        String lastFourDigits = digitsOnly.substring(digitsOnly.length() - 4);
+        String lastFourDigits = cardNumber.substring(cardNumber.length() - 4);
         return "**** **** **** " + lastFourDigits;
     }
 

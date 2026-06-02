@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-roles
+      author: dankuksar
+
+      changes:
+        - createTable:
+            ifNotExists: true
+
+            tableName: roles
+
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+                    unique: true

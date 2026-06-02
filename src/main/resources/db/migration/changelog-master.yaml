@@ -1,5 +1,20 @@
 databaseChangeLog:
   - include:
-      file: db/migration/001_create_users_table.yaml
+      file: 001-create-users.yaml
+      relativeToChangelogFile: true
+
   - include:
-      file: db/migration/002_create_cards_table.yaml
+      file: 002-create-roles.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 003-create-users-roles.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 004-insert-default-roles.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 005-create-refresh-tokens.yaml
+      relativeToChangelogFile: true

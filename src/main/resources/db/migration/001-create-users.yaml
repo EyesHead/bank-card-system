@@ -1,10 +1,14 @@
 databaseChangeLog:
   - changeSet:
-      id: 001_create_users_table
-      author: daniil
+      id: 001-create-users
+      author: dankuksar
+
       changes:
         - createTable:
+            ifNotExists: true
+
             tableName: users
+
             columns:
               - column:
                   name: id
@@ -12,25 +16,30 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+
               - column:
                   name: username
-                  type: VARCHAR(100)
+                  type: VARCHAR(50)
                   constraints:
                     nullable: false
                     unique: true
+
               - column:
                   name: password
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
-              - column:
-                  name: role
-                  type: VARCHAR(20)
-                  constraints:
-                    nullable: false
+
               - column:
                   name: created_at
                   type: TIMESTAMP
-                  defaultValueComputed: NOW()
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
                   constraints:
                     nullable: false
