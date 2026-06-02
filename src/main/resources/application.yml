@@ -3,15 +3,21 @@ spring:
     name: bank-cards
   profiles:
     active: dev
+
+  # Общие настройки JPA (вне профилей)
   jpa:
     open-in-view: false
+
+  # Общие настройки Liquibase
   liquibase:
     change-log: classpath:db/migration/changelog-master.yaml
+    enabled: true
 
 application:
   security:
     jwt:
-      expiration: 86400000
+      access-expiration: 900_000 #15 минут в мс
+      refresh-expiration: 605_800_000 #7 дней в мс
 
 springdoc:
   api-docs:
