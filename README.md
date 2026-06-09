@@ -112,7 +112,7 @@ src/
 
 ```bash
 # 1. Клонировать репозиторий
-git clone https://github.com/your-username/bank-cards.git
+git clone https://github.com/EyesHead/bank-card-system.git
 cd bank-cards
 
 # 2. Запустить PostgreSQL + приложение
