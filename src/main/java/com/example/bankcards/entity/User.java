@@ -31,8 +31,7 @@ public class User extends BaseEntity {
     @Builder.Default
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<Card> cards = new ArrayList<>();
 

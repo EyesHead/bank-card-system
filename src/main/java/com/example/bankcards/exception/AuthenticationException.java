@@ -1,7 +1,9 @@
 package com.example.bankcards.exception;
 
-public class AuthenticationException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+
+public class AuthenticationException extends ApiException {
     public AuthenticationException(String message) {
-        super(message);
+        super(message, HttpStatus.UNAUTHORIZED);
     }
 }

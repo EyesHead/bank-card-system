@@ -4,9 +4,8 @@ application-prod.yml
 target/
 
 .idea/
-*.iml
-*.iws
-*.ipr
+
+.junie/
 
 .DS_Store
 

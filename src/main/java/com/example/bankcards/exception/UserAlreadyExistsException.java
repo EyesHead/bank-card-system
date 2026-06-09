@@ -1,7 +1,9 @@
 package com.example.bankcards.exception;
 
-public class UserAlreadyExistsException extends Exception {
+import org.springframework.http.HttpStatus;
+
+public class UserAlreadyExistsException extends ApiException {
     public UserAlreadyExistsException(String message) {
-        super(message);
+        super(message, HttpStatus.CONFLICT);
     }
 }

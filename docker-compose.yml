@@ -8,8 +8,8 @@ services:
     image: postgres:16-alpine
     container_name: bank_cards_database
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${DB_USERNAME:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
       - POSTGRES_DB=bank_cards
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -31,9 +31,9 @@ services:
         condition: service_healthy
 
     environment:
-      SPRING_PROFILES_ACTIVE: prod
-      DB_URL: jdbc:postgresql://db:5432/bank_cards
-      DB_USERNAME: postgres
-      JWT_SECRET: ${JWT_SECRET}
-      ENCRYPTION_SECRET: ${ENCRYPTION_SECRET}
-      DB_PASSWORD: ${DB_PASSWORD}
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: ${DB_URL:-jdbc:postgresql://db:5432/bank_cards}
+      DB_USERNAME: ${DB_USERNAME:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      JWT_SECRET: ${JWT_SECRET:-01234567890123456789012345678901}
+      ENCRYPTION_SECRET: ${ENCRYPTION_SECRET:-01234567890123456789012345678901}

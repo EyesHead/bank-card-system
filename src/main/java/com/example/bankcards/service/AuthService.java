@@ -6,10 +6,10 @@ import com.example.bankcards.dto.user.UserLoginRequestDto;
 import com.example.bankcards.dto.user.UserRegisterRequestDto;
 import com.example.bankcards.dto.user.UserResponseDto;
 import com.example.bankcards.exception.UserAlreadyExistsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.example.bankcards.exception.UserNotFoundException;
 
 public interface AuthService {
-    JwtAuthenticationResponseDto signIn(UserLoginRequestDto userCredentialsDto) throws UsernameNotFoundException;
+    JwtAuthenticationResponseDto signIn(UserLoginRequestDto userCredentialsDto) throws UserNotFoundException;
     JwtAuthenticationResponseDto refreshToken(RefreshTokenRequestDto refreshTokenRequestDto);
     UserResponseDto register(UserRegisterRequestDto userRegisterRequestDto) throws UserAlreadyExistsException;
 }

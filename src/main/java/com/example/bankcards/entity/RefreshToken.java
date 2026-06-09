@@ -1,21 +1,16 @@
 package com.example.bankcards.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
 @Entity
 @Table(name = "refresh_tokens")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@Builder
 public class RefreshToken extends BaseEntity {
 
     @Column(nullable = false, unique = true)
@@ -25,6 +20,6 @@ public class RefreshToken extends BaseEntity {
     private Instant expiryDate;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 }

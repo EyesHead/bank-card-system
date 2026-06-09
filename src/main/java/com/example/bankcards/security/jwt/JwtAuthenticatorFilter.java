@@ -32,15 +32,22 @@ public class JwtAuthenticatorFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String jwtToken = getTokenFromHttpRequest(request);
-        if (
-                StringUtils.hasText(jwtToken) &&
-                jwtService.validateToken(jwtToken)
-        ) {
+
+        if (StringUtils.hasText(jwtToken)
+                && jwtService.validateToken(jwtToken)) {
             setCustomUserDetailsToSecurityContextHolder(jwtToken);
-        } else {
-            log.error("Invalid JWT Token = '{}'", jwtToken);
         }
+
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+
+        return path.startsWith("/swagger-ui")
+                || path.startsWith("/api-docs")
+                || path.startsWith("/api/auth");
     }
 
     private void setCustomUserDetailsToSecurityContextHolder(String jwtToken) {

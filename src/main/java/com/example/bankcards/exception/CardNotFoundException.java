@@ -1,7 +1,9 @@
 package com.example.bankcards.exception;
 
-public class CardNotFoundException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+
+public class CardNotFoundException extends ApiException {
     public CardNotFoundException(String message) {
-        super(message);
+        super(message, HttpStatus.NOT_FOUND);
     }
 }

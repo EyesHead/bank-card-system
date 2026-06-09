@@ -4,7 +4,6 @@ spring:
   profiles:
     active: dev
 
-  # Общие настройки JPA (вне профилей)
   jpa:
     open-in-view: false
 

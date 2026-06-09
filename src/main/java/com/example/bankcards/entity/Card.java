@@ -1,8 +1,7 @@
 package com.example.bankcards.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,6 +10,9 @@ import java.time.LocalDate;
 @Table(name = "cards")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Card extends BaseEntity {
     @Column(name = "encrypted_number", nullable = false, unique = true)
     private String encryptedNumber;
@@ -24,9 +26,11 @@ public class Card extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
+    @Builder.Default
     private CardStatus status = CardStatus.ACTIVE;
 
     @Column(name = "balance", nullable = false,
             precision = 19, scale = 2)
+    @Builder.Default
     private BigDecimal balance = BigDecimal.ZERO;
 }

@@ -1,20 +1,24 @@
 databaseChangeLog:
   - include:
-      file: 001-create-users.yaml
+      file: 001-create-users.sql
       relativeToChangelogFile: true
 
   - include:
-      file: 002-create-roles.yaml
+      file: 002-create-roles.sql
       relativeToChangelogFile: true
 
   - include:
-      file: 003-create-users-roles.yaml
+      file: 003-insert-default-roles.sql
       relativeToChangelogFile: true
 
   - include:
-      file: 004-insert-default-roles.yaml
+      file: 004-create-users-roles.sql
       relativeToChangelogFile: true
 
   - include:
-      file: 005-create-refresh-tokens.yaml
+      file: 005-create-refresh-tokens.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: 006-create-cards.sql
       relativeToChangelogFile: true
